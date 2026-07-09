@@ -364,7 +364,8 @@ body {
   display: none;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
+  justify-content: center;  /* ← 加这行 */
+  padding-top: 0;           /* ← 把这行改成 0 */
 }
 
 .pin-overlay.active {
