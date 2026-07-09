@@ -340,8 +340,28 @@ document.querySelectorAll('.chat-item').forEach(chat => {
       newsContainer.style.display = 'block';
       updateNewsTime();
     }
+    
+    if (chatName === '老师') {
+      wechatContainer.style.display = 'none';
+      teacherChatContainer.style.display = 'block';
+      updateTeacherChatTime();
+      // 滚动到最底部
+      const teacherMessages = document.getElementById('teacherMessages');
+      if (teacherMessages) {
+        teacherMessages.scrollTop = teacherMessages.scrollHeight;
+      }
+    }
+
+        if (chatName === '信乐律师') {
+      wechatContainer.style.display = 'none';
+      shinobiChatContainer.style.display = 'block';
+      updateShinobiChatTime();
+    }
+
+    
   });
 });
+
 
 // 新闻返回按钮
 const newsBackBtn = document.getElementById('newsBackBtn');
@@ -557,3 +577,52 @@ function addHistory(name, type) {
     newItem.style.transition = 'background 1s ease';
   }, 2000);
 }
+
+// ================================================================
+// 老师聊天界面
+// ================================================================
+const teacherChatContainer = document.getElementById('teacherChatContainer');
+
+// 老师聊天时间更新
+function updateTeacherChatTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const timeDisplay = document.getElementById('teacherChatTime');
+  if (timeDisplay) {
+    timeDisplay.textContent = `${hours}:${minutes}`;
+  }
+}
+
+// 老师聊天返回按钮
+const teacherChatBackBtn = document.getElementById('teacherChatBackBtn');
+if (teacherChatBackBtn) {
+  teacherChatBackBtn.addEventListener('click', () => {
+    teacherChatContainer.style.display = 'none';
+    wechatContainer.style.display = 'block';
+  });
+}
+
+// ================================================================
+// 信乐律师聊天界面
+// ================================================================
+const shinobiChatContainer = document.getElementById('shinobiChatContainer');
+
+function updateShinobiChatTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const timeDisplay = document.getElementById('shinobiChatTime');
+  if (timeDisplay) {
+    timeDisplay.textContent = `${hours}:${minutes}`;
+  }
+}
+
+const shinobiChatBackBtn = document.getElementById('shinobiChatBackBtn');
+if (shinobiChatBackBtn) {
+  shinobiChatBackBtn.addEventListener('click', () => {
+    shinobiChatContainer.style.display = 'none';
+    wechatContainer.style.display = 'block';
+  });
+}
+

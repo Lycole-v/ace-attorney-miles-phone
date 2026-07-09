@@ -375,6 +375,7 @@
         </div>
         <div class="chat-meta">
           <span class="chat-time">昨天</span>
+          <span class="chat-badge">3</span>
         </div>
       </div>
 
@@ -746,7 +747,297 @@
   </div>
 
 
+<!-- ==================== 老师聊天界面（默认隐藏） ==================== -->
+<div class="chat-detail-container" id="teacherChatContainer" style="display: none;">
+  
+  <!-- 状态栏 -->
+  <div class="status-bar chat-detail-status-bar">
+    <span class="status-time" id="teacherChatTime">12:42</span>
+    <div class="status-icons">
+      <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+      </svg>
+      <span class="battery-wrapper">
+        <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+          <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+        </svg>
+        <span class="battery-text" id="teacherChatBattery">100%</span>
+      </span>
+    </div>
+  </div>
 
+  <!-- 聊天顶部导航 -->
+  <div class="chat-detail-header">
+    <span class="chat-detail-back" id="teacherChatBackBtn">← 返回</span>
+    <span class="chat-detail-title">老师</span>
+    <span class="chat-detail-menu">⋯</span>
+  </div>
+
+  <!-- 聊天消息区域 -->
+  <div class="chat-messages" id="teacherMessages">
+    
+    <!-- ====== 8月1日 ====== -->
+    <div class="msg-date-label">8月1日</div>
+
+    <!-- 老师：生日快乐 -->
+    <div class="msg-row msg-left">
+      <div class="msg-avatar red">师</div>
+      <div class="msg-bubble msg-white">
+        <p>怜侍，生日快乐。</p>
+      </div>
+    </div>
+
+    <!-- 老师：红包转账 -->
+    <div class="msg-row msg-left">
+      <div class="msg-avatar red">师</div>
+      <div class="msg-bubble msg-red-packet">
+        <div class="red-packet-icon">🧧</div>
+        <div class="red-packet-text">【转账：生日快乐】</div>
+        <div class="red-packet-amount">¥100,000.00</div>
+        <div class="red-packet-sub">来自支付宝</div>
+      </div>
+    </div>
+
+    <!-- 我：啊，谢谢老师！ -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>啊，谢谢老师！</p>
+      </div>
+    </div>
+
+    <!-- 我：冥给我买了... -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>冥给我买了福尔摩斯探案全集，还有Paul Halique的雕塑作品。</p>
+      </div>
+    </div>
+
+    <!-- 老师：...？ -->
+    <div class="msg-row msg-left">
+      <div class="msg-avatar red">师</div>
+      <div class="msg-bubble msg-white">
+        <p>...？</p>
+      </div>
+    </div>
+
+    <!-- 我：？ -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>？</p>
+      </div>
+    </div>
+
+    <!-- 老师：没什么，怜侍。红包收了。 -->
+    <div class="msg-row msg-left">
+      <div class="msg-avatar red">师</div>
+      <div class="msg-bubble msg-white">
+        <p>没什么，怜侍。红包收了。</p>
+      </div>
+    </div>
+
+    <!-- 系统消息：已领取红包 -->
+    <div class="msg-system">🔒 已领取 老师 的红包转账</div>
+
+    <!-- ====== 9月9日 ====== -->
+    <div class="msg-date-label">9月9日</div>
+
+    <!-- 老师：之前的连战连胜 -->
+    <div class="msg-row msg-left">
+      <div class="msg-avatar red">师</div>
+      <div class="msg-bubble msg-white">
+        <p>怜侍，之前的连战连胜，做的很漂亮。</p>
+      </div>
+    </div>
+
+    <!-- 我：不敢当，老师 -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>不敢当，老师</p>
+      </div>
+    </div>
+
+    <!-- 老师：正因如此 -->
+    <div class="msg-row msg-left">
+      <div class="msg-avatar red">师</div>
+      <div class="msg-bubble msg-white">
+        <p>正因如此，败诉才十分令人遗憾</p>
+      </div>
+    </div>
+
+    <!-- 我：万分抱歉... -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>万分抱歉...</p>
+      </div>
+    </div>
+
+    <!-- 老师：有罪就是正义 -->
+    <div class="msg-row msg-left">
+      <div class="msg-avatar red">师</div>
+      <div class="msg-bubble msg-white">
+        <p>有罪就是正义。下次努力。</p>
+      </div>
+    </div>
+
+    <!-- 我：好的老师！ -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>好的老师！</p>
+      </div>
+    </div>
+
+    <!-- ====== 10月20日 ====== -->
+    <div class="msg-date-label">10月20日</div>
+
+    <!-- 我：... -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>...</p>
+      </div>
+    </div>
+
+    <!-- 我：老师，我还是辜负了你的期待 -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>老师，我还是辜负了你的期待</p>
+      </div>
+    </div>
+
+    <!-- 我：我没有做到完美 -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>我没有做到完美</p>
+      </div>
+    </div>
+
+    <!-- 我：让您失望了 -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>让您失望了</p>
+      </div>
+    </div>
+
+    <!-- 我：老师？ -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>老师？</p>
+      </div>
+    </div>
+
+    <!-- ====== 10月21日 ====== -->
+    <div class="msg-date-label">10月21日</div>
+
+    <!-- 我：老师 -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>老师</p>
+      </div>
+    </div>
+
+    <!-- 我：... -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>...</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 底部输入栏 -->
+  <div class="chat-input-bar">
+    <span class="chat-input-icon">   </span>
+    <span class="chat-input-placeholder">老师...</span>
+    <span class="chat-input-send">发送</span>
+  </div>
+</div>
+
+<!-- ==================== 信乐律师聊天界面（默认隐藏） ==================== -->
+<div class="chat-detail-container" id="shinobiChatContainer" style="display: none;">
+  
+  <!-- 状态栏 -->
+  <div class="status-bar chat-detail-status-bar">
+    <span class="status-time" id="shinobiChatTime">12:42</span>
+    <div class="status-icons">
+      <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+      </svg>
+      <span class="battery-wrapper">
+        <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+          <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+        </svg>
+        <span class="battery-text" id="shinobiChatBattery">100%</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- 聊天顶部导航 -->
+  <div class="chat-detail-header">
+    <span class="chat-detail-back" id="shinobiChatBackBtn">← 返回</span>
+    <span class="chat-detail-title">信乐律师</span>
+    <span class="chat-detail-menu">⋯</span>
+  </div>
+
+  <!-- 聊天消息区域 -->
+  <div class="chat-messages" id="shinobiMessages">
+    
+    <!-- 5月10日 -->
+    <div class="msg-date-label">5月10日</div>
+
+    <!-- 我 -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green">
+        <p>信乐先生，听说你去了美国</p>
+      </div>
+    </div>
+
+    <!-- 系统消息：发送失败 -->
+    <div class="msg-system">❗ 消息发送失败</div>
+
+    <!-- 我 -->
+    <div class="msg-row msg-right">
+      <div class="msg-avatar dark">我</div>
+      <div class="msg-bubble msg-green msg-failed">
+        <p>...拉黑了吗。</p>
+      </div>
+    </div>
+
+    <!-- 系统消息：发送失败 -->
+    <div class="msg-system">❗ 消息发送失败</div>
+
+    <!-- 系统消息：已不是好友 -->
+    <div class="msg-system msg-system-warn">❗ 你们已不是好友，无法发送消息</div>
+
+  </div>
+
+  <!-- 底部输入栏（完全不可用） -->
+  <div class="chat-input-bar chat-input-disabled">
+    <span class="chat-input-placeholder">你们已不是好友...</span>
+  </div>
+</div>
 
 
   <script src="intro.js"></script>
