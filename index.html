@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>逆转裁判 · IF</title>
+  <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+
+  <!-- ==================== 全屏触发层 ==================== -->
+  <div class="fullscreen-overlay" id="fullscreenOverlay">
+    <div class="overlay-content">
+      <p class="overlay-icon">⚖️</p>
+      <p class="overlay-text">点击屏幕进入</p>
+    </div>
+  </div>
+
+  <!-- ==================== 开场页面 ==================== -->
+  <div class="intro-container" id="introContainer">
+    <div class="intro-scroll">
+      
+      <div class="intro-block">
+        <h1 class="game-title">逆转裁判</h1>
+        <p class="game-subtitle">～ IF 线 ～</p>
+      </div>
+
+      <div class="intro-block disclaimer">
+        <p>· 逆转裁判1时间线，可能略微崩坏</p>
+        <p>· 极度OOC，应该算IF线..？</p>
+        <p>· 时间线错乱（大概是2001年也有手机和微信的假设...）</p>
+        <p>· 和原作偏差可能较大</p>
+        <p>· 全员cb向，虽然作者可能无意识有倾向</p>
+        <p>· 游玩愉快！</p>
+      </div>
+
+      <div class="intro-block story">
+        <p>你是检察官<strong>御剑怜侍</strong>。</p>
+        <p>15年前，DL-6号事件中你失去了父亲，随后被传说中的检察官狩魔豪收为徒弟。你从他那里学到了作为检察官需要具备的一切，相信<strong>"被告人都是有罪的"</strong>。</p>
+        <p>年纪轻轻就成为了"天才检察官"，无一败绩。</p>
+        <p>然而——</p>
+        <p>最近几个月，新手律师<strong>成步堂龙一</strong>与你对峙的两个案件中，你都遗憾落败了。</p>
+        <p>你正在思考，你之前的职业理念，真的是正确的吗？</p>
+      </div>
+
+      <div class="intro-block thoughts">
+        <p class="thought-text">最近老师不怎么愿意回复我的消息了。</p>
+        <p class="thought-text">是因为完美记录被打破的事情吗？</p>
+      </div>
+
+      <div class="intro-block ending">
+        <p>怀着这样的心情，你迎接了新的一天。</p>
+        <p class="closing-line">离那一天，真是越来越近了呢……</p>
+      </div>
+
+      <div class="intro-block start-game">
+        <button class="start-btn" id="startBtn">📱 拿起手机</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 锁屏页面（默认隐藏） ==================== -->
+<div class="lockscreen-container" id="lockscreenContainer" style="display: none;">
+  
+  <!-- 状态栏 - 放在主屏幕外面 -->
+  <div class="status-bar" id="statusBar">
+    <span class="status-time"></span>
+    <div class="status-icons">
+      <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+      </svg>
+      <span class="battery-wrapper">
+        <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+          <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+        </svg>
+        <span class="battery-text" id="batteryPercent">100%</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- 主锁屏界面 -->
+  <div class="main-screen" id="mainScreen">
+    <!-- 时间日期 -->
+    <div class="time-date-area">
+      <div class="time" id="timeDisplay">12:42</div>
+      <div class="date" id="dateDisplay">2016年12月23日 星期五</div>
+    </div>
+    <!-- 上滑提示 -->
+    <div class="swipe-up-hint">上滑以解锁</div>
+  </div>
+
+    <!-- 右侧小面板 -->
+    <div class="side-panel" id="sidePanel">
+      <h3>📝 备忘录</h3>
+      <div class="panel-item">
+        <p>订冥返程的机票</p>
+      </div>
+      <div class="panel-item">
+        <p>不要忘记，那个日期。</p>
+      </div>
+      
+      <h3 style="margin-top:25px;">📅 日历</h3>
+      <div class="panel-item">
+        <p>12月24日 - 平安夜</p>
+        <p>12月25日 - 圣诞节</p>
+        <p>12月28日 - ...</p>
+      </div>
+      
+      <h3 style="margin-top:25px;">✅ 待办</h3>
+      <div class="panel-item">
+        <p>☐ 超市购物</p>
+        <p>☐ 完成报告</p>
+      </div>
+      
+      <h3 style="margin-top:25px;">🌤️ 天气</h3>
+      <div class="panel-item weather-row">
+        <span>今天</span>
+        <span>晴 5°C</span>
+      </div>
+      
+      <p class="panel-close-hint">右滑回到主屏幕</p>
+    </div>
+
+    <!-- 密码输入覆盖层 -->
+    <div class="pin-overlay" id="pinOverlay">
+      <div class="pin-back" id="pinBackBtn">← 返回</div>
+      <div class="pin-title">输入密码</div>
+      <div class="pin-dots" id="pinDots">
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+      </div>
+      <div class="pin-pad" id="pinPad"></div>
+      <div class="error-msg" id="errorMsg"></div>
+    </div>
+  </div>
+
+    <!-- ==================== 主屏幕（App 界面，默认隐藏） ==================== -->
+  <div class="homescreen-container" id="homescreenContainer" style="display: none;">
+    
+    <!-- 状态栏 -->
+    <div class="status-bar homescreen-status-bar">
+      <span class="status-time" id="homescreenTime">12:42</span>
+      <div class="status-icons">
+        <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+          <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+        </svg>
+        <span class="battery-wrapper">
+          <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+            <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+            <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+          </svg>
+          <span class="battery-text" id="homescreenBattery">100%</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- App 图标网格 -->
+    <div class="app-grid">
+      
+      <!-- 第一行 -->
+      <div class="app-icon" data-app="messages">
+        <div class="icon-bg">
+          <img src="Photos/message.webp" alt="微信" class="icon-img">
+        </div>
+        <span class="icon-label">信息</span>
+      </div>
+
+      <div class="app-icon" data-app="phone">
+        <div class="icon-bg green">
+          <span class="icon-emoji">📞</span>
+        </div>
+        <span class="icon-label">电话</span>
+      </div>
+
+      <div class="app-icon" data-app="mail">
+        <div class="icon-bg blue">
+          <span class="icon-emoji">📧</span>
+        </div>
+        <span class="icon-label">邮件</span>
+      </div>
+
+      <div class="app-icon" data-app="photos">
+        <div class="icon-bg orange">
+          <span class="icon-emoji">🖼️</span>
+        </div>
+        <span class="icon-label">照片</span>
+      </div>
+
+      <!-- 第二行 -->
+      <div class="app-icon" data-app="wechat">
+        <div class="icon-bg">
+          <img src="Photos/wechatIcon.jpg" alt="微信" class="icon-img">
+        </div>
+        <span class="icon-label">微信</span>
+      </div>
+
+      <div class="app-icon" data-app="alipay">
+        <div class="icon-bg">
+          <img src="Photos/zhifubao.png" alt="支付宝" class="icon-img">
+        </div>
+        <span class="icon-label">支付宝</span>
+      </div>
+
+      <div class="app-icon" data-app="notes">
+        <div class="icon-bg yellow">
+          <span class="icon-emoji">📝</span>
+        </div>
+        <span class="icon-label">备忘录</span>
+      </div>
+
+      <div class="app-icon" data-app="calendar">
+        <div class="icon-bg red">
+          <span class="icon-emoji">📅</span>
+        </div>
+        <span class="icon-label">日历</span>
+      </div>
+
+      <!-- 第三行 -->
+      <div class="app-icon" data-app="settings">
+        <div class="icon-bg gray">
+          <span class="icon-emoji">⚙️</span>
+        </div>
+        <span class="icon-label">设置</span>
+      </div>
+
+      <div class="app-icon" data-app="safari">
+  <div class="icon-bg">
+    <img src="Photos/safari.webp" alt="Safari" class="icon-img">
+  </div>
+  <span class="icon-label">Safari</span>
+</div>
+
+      <div class="app-icon" data-app="weather">
+        <div class="icon-bg blue">
+          <span class="icon-emoji">🌤️</span>
+        </div>
+        <span class="icon-label">天气</span>
+      </div>
+
+      <div class="app-icon" data-app="clock">
+        <div class="icon-bg black">
+          <span class="icon-emoji">🕐</span>
+        </div>
+        <span class="icon-label">时钟</span>
+      </div>
+
+    </div>
+
+    <!-- 底部 Dock -->
+    <div class="dock">
+      <div class="app-icon" data-app="phone-dock">
+        <div class="icon-bg green">
+          <span class="icon-emoji">📞</span>
+        </div>
+        <span class="icon-label">电话</span>
+      </div>
+      <div class="app-icon" data-app="messages-dock">
+        <div class="icon-bg">
+          <img src="Photos/message.webp" alt="微信" class="icon-img">
+        </div>
+        <span class="icon-label">信息</span>
+      </div>
+      <div class="app-icon" data-app="wechat-dock">
+        <div class="icon-bg">
+          <img src="Photos/wechatIcon.jpg" alt="微信" class="icon-img">
+        </div>
+        <span class="icon-label">微信</span>
+      </div>
+    </div>
+  </div>
+
+    <!-- ==================== 微信界面（默认隐藏） ==================== -->
+  <div class="wechat-container" id="wechatContainer" style="display: none;">
+    
+    <!-- 状态栏 -->
+    <div class="status-bar wechat-status-bar">
+      <span class="status-time" id="wechatTime">12:42</span>
+      <div class="status-icons">
+        <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+          <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+        </svg>
+        <span class="battery-wrapper">
+          <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+            <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+            <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+          </svg>
+          <span class="battery-text" id="wechatBattery">100%</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- 微信顶部导航 -->
+    <div class="wechat-header">
+      <span class="wechat-back" id="wechatBackBtn">← 返回</span>
+      <span class="wechat-title">微信</span>
+      <span class="wechat-add">＋</span>
+    </div>
+
+    <!-- 聊天列表 -->
+    <div class="wechat-chat-list">
+      
+      <!-- 置顶：冥 -->
+      <div class="chat-item pinned" data-chat="冥">
+        <div class="chat-avatar purple">冥</div>
+        <div class="chat-info">
+          <div class="chat-name">冥</div>
+          <div class="chat-preview">不知道。</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">昨天</span>
+          <span class="chat-badge">1</span>
+        </div>
+      </div>
+
+      <!-- 置顶：老师 -->
+      <div class="chat-item pinned" data-chat="老师">
+        <div class="chat-avatar red">师</div>
+        <div class="chat-info">
+          <div class="chat-name">老师</div>
+          <div class="chat-preview">...</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">周一</span>
+        </div>
+      </div>
+
+      <!-- 置顶：检察院公司群 -->
+      <div class="chat-item pinned" data-chat="检察院公司群">
+        <div class="chat-avatar blue">检</div>
+        <div class="chat-info">
+          <div class="chat-name">检察院公司群</div>
+          <div class="chat-preview">[图片]</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">12:30</span>
+          <span class="chat-badge muted">99+</span>
+        </div>
+      </div>
+
+      <!-- 置顶：警察院沟通群 -->
+      <div class="chat-item pinned" data-chat="警察院沟通群">
+        <div class="chat-avatar navy">警</div>
+        <div class="chat-info">
+          <div class="chat-name">警察院沟通群</div>
+          <div class="chat-preview">糸锯：收到，马上调查</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">11:05</span>
+        </div>
+      </div>
+            <!-- 成步堂 -->
+      <div class="chat-item" data-chat="成步堂">
+        <div class="chat-avatar blue">成</div>
+        <div class="chat-info">
+          <div class="chat-name">成步堂</div>
+          <div class="chat-preview">要来吗？</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">昨天</span>
+        </div>
+      </div>
+
+      <!-- 糸锯刑警 -->
+      <div class="chat-item" data-chat="糸锯刑警">
+        <div class="chat-avatar green">糸</div>
+        <div class="chat-info">
+          <div class="chat-name">糸锯刑警</div>
+          <div class="chat-preview">御剑检察官，证据送到了</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">12/18</span>
+        </div>
+      </div>
+      <!-- 严徒署长 -->
+      <div class="chat-item" data-chat="严徒署长">
+        <div class="chat-avatar gray">严</div>
+        <div class="chat-info">
+          <div class="chat-name">严徒署长</div>
+          <div class="chat-preview">小剑~要游泳吗？</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">12/10</span>
+        </div>
+      </div>
+<!-- 新闻资讯 -->
+      <div class="chat-item" data-chat="新闻资讯">
+        <div class="chat-avatar blue">
+
+<?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 44L21 36" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M42 44V12H26L27 20L28 28L29 36L22 44H42Z" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 28H33" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 20H33" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 4H25L26 12L27 20L28 28L29 36H21H6V4Z" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12H19" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 20H20" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 28H21" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="chat-info">
+          <div class="chat-name">新闻资讯</div>
+          <div class="chat-preview">三传奇都是假的？小道...</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">11/10</span>
+        </div>
+      </div>
+
+      <!-- 真宵 -->
+      <div class="chat-item" data-chat="真宵">
+        <div class="chat-avatar pink">真</div>
+        <div class="chat-info">
+          <div class="chat-name">真宵</div>
+          <div class="chat-preview">谢谢你帮了成步堂君！</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">10/20</span>
+        </div>
+      </div>
+
+      
+
+      <!-- 信乐律师 -->
+      <div class="chat-item" data-chat="信乐律师">
+        <div class="chat-avatar brown">信</div>
+        <div class="chat-info">
+          <div class="chat-name">信乐律师</div>
+          <div class="chat-preview">❗你们已不是好友，无法发送消息</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">1年前</span>
+        </div>
+      </div>
+
+      
+
+      
+
+      <!-- 父亲 -->
+      <div class="chat-item" data-chat="父亲">
+        <div class="chat-avatar dark">父</div>
+        <div class="chat-info">
+          <div class="chat-name">父亲</div>
+          <div class="chat-preview">怜侍，下来了吗？我们坐电梯</div>
+        </div>
+        <div class="chat-meta">
+          <span class="chat-time">15年前</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 新闻资讯界面（默认隐藏） ==================== -->
+  <div class="news-container" id="newsContainer" style="display: none;">
+    
+    <!-- 状态栏 -->
+    <div class="status-bar news-status-bar">
+      <span class="status-time" id="newsTime">12:42</span>
+      <div class="status-icons">
+        <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+          <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+        </svg>
+        <span class="battery-wrapper">
+          <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+            <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+            <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+          </svg>
+          <span class="battery-text" id="newsBattery">100%</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- 新闻顶部导航 -->
+    <div class="news-header">
+      <span class="news-back" id="newsBackBtn">← 返回</span>
+      <span class="news-title">新闻资讯</span>
+      <span class="news-header-spacer"></span>
+    </div>
+
+    <!-- 新闻列表 -->
+    <div class="news-list">
+      
+      <div class="news-item">
+        <h2 class="news-headline">三传奇都是假的？小道消息称，狩魔三人组暗中作伪证！</h2>
+        <div class="news-meta">
+          <span class="news-date">11月10日</span>
+          <span class="news-author">大泽木夏美</span>
+        </div>
+        <p class="news-snippet">近日有匿名人士爆料，传说中的检察官狩魔豪与其儿女检察官所承办的多起案件存在伪造证据的嫌疑。如果属实，这将是司法界本世纪最大的丑闻……</p>
+        <span class="news-read-more">阅读全文 →</span>
+      </div>
+
+      <div class="news-item">
+        <h2 class="news-headline">一代传奇陨落！御剑检察官的二次败诉！</h2>
+        <div class="news-meta">
+          <span class="news-date">10月20日</span>
+          <span class="news-author">速水美纪子</span>
+        </div>
+        <p class="news-snippet">被誉为"天才检察官"的御剑怜侍，在与新人律师成步堂龙一的第二次对决中再次落败。这位曾经无一败绩的检察官，如今已连失两城……</p>
+        <span class="news-read-more">阅读全文 →</span>
+      </div>
+
+      <div class="news-item">
+        <h2 class="news-headline">震惊！曾被誉为天才的御剑检察官居然败诉！</h2>
+        <div class="news-meta">
+          <span class="news-date">9月9日</span>
+          <span class="news-author">大泽木夏美</span>
+        </div>
+        <p class="news-snippet">昨日法庭上，新人律师成步堂龙一成功为被告人赢得无罪判决。这是御剑怜侍检察官职业生涯中首次败诉，法庭内外一片哗然……</p>
+        <span class="news-read-more">阅读全文 →</span>
+      </div>
+
+      <div class="news-item">
+        <h2 class="news-headline">多年前的未解之谜解析！DL-6号事件的真相真的要落入黑暗了吗！</h2>
+        <div class="news-meta">
+          <span class="news-date">8月1日</span>
+          <span class="news-author">速水美纪子</span>
+        </div>
+        <p class="news-snippet">距离DL-6号事件已经过去了十五年，然而真相至今仍未水落石出。当年被逮捕的嫌疑人无罪释放，15年的期限即将过去，这起案件的真相或许将永远成为谜团……</p>
+        <span class="news-read-more">阅读全文 →</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 邮箱登录界面（默认隐藏） ==================== -->
+  <div class="mail-container" id="mailContainer" style="display: none;">
+    
+    <!-- 状态栏 -->
+    <div class="status-bar mail-status-bar">
+      <span class="status-time" id="mailTime">12:42</span>
+      <div class="status-icons">
+        <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+          <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+        </svg>
+        <span class="battery-wrapper">
+          <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+            <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+            <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+          </svg>
+          <span class="battery-text" id="mailBattery">100%</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- 邮箱顶部导航 -->
+    <div class="mail-header">
+      <span class="mail-back" id="mailBackBtn">← 返回</span>
+      <span class="mail-title">邮箱</span>
+      <span class="mail-header-spacer"></span>
+    </div>
+
+    <!-- 登录表单 -->
+    <div class="mail-login">
+      <div class="mail-logo">✉️</div>
+      <h2 class="mail-welcome">欢迎回来，御剑怜侍</h2>
+      
+      <div class="mail-input-group">
+        <label class="mail-label">邮箱地址</label>
+        <div class="mail-input-wrapper">
+          <input type="text" class="mail-input" id="mailAddress" placeholder="请输入用户名">
+          <span class="mail-domain">@pro.gov.com</span>
+        </div>
+      </div>
+
+      <div class="mail-input-group">
+        <label class="mail-label">密码</label>
+        <div class="mail-input-wrapper">
+          <input type="password" class="mail-input" id="mailPassword" placeholder="请输入密码">
+        </div>
+      </div>
+
+      <button class="mail-login-btn" id="mailLoginBtn">登 录</button>
+      
+      <p class="mail-error" id="mailError"></p>
+      
+      <p class="mail-hint">忘记密码？请联系系统管理员</p>
+    </div>
+  </div>
+
+
+    <!-- ==================== 电话界面（默认隐藏） ==================== -->
+  <div class="phone-container" id="phoneContainer" style="display: none;">
+    
+    <!-- 状态栏 -->
+    <div class="status-bar phone-status-bar">
+      <span class="status-time" id="phoneTime">12:42</span>
+      <div class="status-icons">
+        <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+          <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+        </svg>
+        <span class="battery-wrapper">
+          <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+            <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+            <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+          </svg>
+          <span class="battery-text" id="phoneBattery">100%</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- 电话顶部导航 -->
+    <div class="phone-header">
+      <span class="phone-back" id="phoneBackBtn">← 返回</span>
+      <span class="phone-title">电话</span>
+      <span class="phone-header-spacer"></span>
+    </div>
+
+    <!-- 标签切换 -->
+    <div class="phone-tabs">
+      <span class="phone-tab active" data-tab="dial">拨号</span>
+      <span class="phone-tab" data-tab="contacts">通讯录</span>
+      <span class="phone-tab" data-tab="history">通话记录</span>
+    </div>
+
+    <!-- ========== 拨号盘 ========== -->
+    <div class="phone-tab-content active" id="dialTab">
+      <div class="dial-input-area">
+        <input type="text" class="dial-input" id="dialInput" placeholder="" readonly>
+      </div>
+      <div class="dial-pad">
+        <div class="dial-key" data-key="1"><span>1</span></div>
+        <div class="dial-key" data-key="2"><span>2</span><small>ABC</small></div>
+        <div class="dial-key" data-key="3"><span>3</span><small>DEF</small></div>
+        <div class="dial-key" data-key="4"><span>4</span><small>GHI</small></div>
+        <div class="dial-key" data-key="5"><span>5</span><small>JKL</small></div>
+        <div class="dial-key" data-key="6"><span>6</span><small>MNO</small></div>
+        <div class="dial-key" data-key="7"><span>7</span><small>PQRS</small></div>
+        <div class="dial-key" data-key="8"><span>8</span><small>TUV</small></div>
+        <div class="dial-key" data-key="9"><span>9</span><small>WXYZ</small></div>
+        <div class="dial-key" data-key="*"><span>*</span></div>
+        <div class="dial-key" data-key="0"><span>0</span><small>+</small></div>
+        <div class="dial-key" data-key="#"><span>#</span></div>
+      </div>
+      <div class="dial-call-area">
+        <div class="dial-call-btn" id="dialCallBtn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/>
+          </svg>
+        </div>
+        <div class="dial-delete-btn" id="dialDeleteBtn">⌫</div>
+      </div>
+      <p class="dial-error" id="dialError"></p>
+    </div>
+
+    <!-- ========== 通讯录 ========== -->
+    <div class="phone-tab-content" id="contactsTab">
+      <div class="contacts-list">
+        <div class="contact-item" data-name="老师" data-number="555-873-0579">
+          <div class="contact-avatar red">师</div>
+          <span class="contact-name">老师</span>
+          <span class="contact-arrow">📞</span>
+        </div>
+        <div class="contact-item" data-name="冥" data-number="128-555-0128">
+          <div class="contact-avatar purple">冥</div>
+          <span class="contact-name">冥</span>
+          <span class="contact-arrow">📞</span>
+        </div>
+        <div class="contact-item" data-name="成步堂" data-number="555-019-2834">
+          <div class="contact-avatar blue">成</div>
+          <span class="contact-name">成步堂</span>
+          <span class="contact-arrow">📞</span>
+        </div>
+        <div class="contact-item" data-name="绫里真宵" data-number="555-374-8291">
+          <div class="contact-avatar pink">真</div>
+          <span class="contact-name">绫里真宵</span>
+          <span class="contact-arrow">📞</span>
+        </div>
+        <div class="contact-item" data-name="严徒海慈" data-number="555-102-9384">
+          <div class="contact-avatar gray">严</div>
+          <span class="contact-name">严徒海慈</span>
+          <span class="contact-arrow">📞</span>
+        </div>
+        <div class="contact-item" data-name="糸锯圭介" data-number="555-667-2849">
+          <div class="contact-avatar green">糸</div>
+          <span class="contact-name">糸锯圭介</span>
+          <span class="contact-arrow">📞</span>
+        </div>
+        <div class="contact-item" data-name="父亲" data-number="555-000-0000">
+          <div class="contact-avatar dark">父</div>
+          <span class="contact-name">父亲</span>
+          <span class="contact-arrow">📞</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 通话记录 ========== -->
+    <div class="phone-tab-content" id="historyTab">
+      <div class="history-list" id="historyList">
+        <div class="history-item">
+          <div class="history-avatar green">糸</div>
+          <div class="history-info">
+            <span class="history-name">糸锯圭介</span>
+            <span class="history-type">📞 呼入</span>
+          </div>
+          <div class="history-time">12:34 12/10</div>
+        </div>
+        <div class="history-item">
+          <div class="history-avatar purple">冥</div>
+          <div class="history-info">
+            <span class="history-name">冥</span>
+            <span class="history-type">📞 呼出</span>
+          </div>
+          <div class="history-time">15:29 8/1</div>
+        </div>
+        <div class="history-item">
+          <div class="history-avatar red">师</div>
+          <div class="history-info">
+            <span class="history-name">老师</span>
+            <span class="history-type">📞 呼出</span>
+          </div>
+          <div class="history-time">10:00 8/1</div>
+        </div>
+        <div class="history-item">
+          <div class="history-avatar purple">冥</div>
+          <div class="history-info">
+            <span class="history-name">冥</span>
+            <span class="history-type">📞 呼出</span>
+          </div>
+          <div class="history-time">16:27 6/24</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <script src="intro.js"></script>
+</body>
+</html>
