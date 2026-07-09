@@ -519,7 +519,7 @@ body {
 .icon-emoji {
   font-size: 30px;
   line-height: 1;
-  margin-top: -5px;
+  /* margin-top: -5px; */
 }
 
 .icon-label {
@@ -1104,7 +1104,7 @@ body {
 
 /* ========== 拨号盘 ========== */
 .dial-input-area {
-  padding: 18px 30px 8px;
+  padding: 20px 30px 10px;
   text-align: center;
 }
 
@@ -1115,7 +1115,7 @@ body {
   border-bottom: 1px solid #333;
   outline: none;
   padding: 10px 0;
-  font-size: 26px;
+  font-size: 28px;
   color: #fff;
   text-align: center;
   letter-spacing: 3px;
@@ -1124,15 +1124,15 @@ body {
 
 .dial-pad {
   display: grid;
-  grid-template-columns: repeat(3, 70px);
-  gap: 14px;
+  grid-template-columns: repeat(3, 80px);
+  gap: 15px;
   justify-content: center;
   padding: 10px 0;
 }
 
 .dial-key {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: #2a2a2a;
   display: flex;
@@ -1148,12 +1148,12 @@ body {
 }
 
 .dial-key span {
-  font-size: 25px;
+  font-size: 28px;
   color: #fff;
 }
 
 .dial-key small {
-  font-size: 8px;
+  font-size: 9px;
   color: #888;
   margin-top: 2px;
   letter-spacing: 1px;
@@ -1163,13 +1163,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 38px;
-  padding: 13px 0;
+  gap: 40px;
+  padding: 20px 0;
 }
 
 .dial-call-btn {
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   background: #34c759;
   display: flex;
@@ -1178,17 +1178,12 @@ body {
   cursor: pointer;
 }
 
-.dial-call-btn svg {
-  width: 26px;
-  height: 26px;
-}
-
 .dial-call-btn:active {
   background: #28a745;
 }
 
 .dial-delete-btn {
-  font-size: 22px;
+  font-size: 24px;
   color: #888;
   cursor: pointer;
   padding: 10px;
@@ -1203,7 +1198,7 @@ body {
   color: #ff3b30;
   font-size: 14px;
   min-height: 20px;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 /* ========== 通讯录 ========== */
