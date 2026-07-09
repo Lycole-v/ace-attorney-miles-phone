@@ -289,6 +289,18 @@ document.querySelectorAll('.app-icon').forEach(icon => {
       updatePhoneTime();
     }
 
+        if (appName === 'weather') {
+      homescreenContainer.style.display = 'none';
+      weatherContainer.style.display = 'block';
+      updateWeatherTime();
+    }
+
+        if (appName === 'notes') {
+      homescreenContainer.style.display = 'none';
+      notesContainer.style.display = 'block';
+      updateNotesTime();
+    }
+
 
   });
 });
@@ -358,7 +370,7 @@ document.querySelectorAll('.chat-item').forEach(chat => {
       updateShinobiChatTime();
     }
 
-    
+
   });
 });
 
@@ -626,3 +638,49 @@ if (shinobiChatBackBtn) {
   });
 }
 
+
+// ================================================================
+// 天气界面
+// ================================================================
+const weatherContainer = document.getElementById('weatherContainer');
+
+function updateWeatherTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const timeDisplay = document.getElementById('weatherTime');
+  if (timeDisplay) {
+    timeDisplay.textContent = `${hours}:${minutes}`;
+  }
+}
+
+const weatherBackBtn = document.getElementById('weatherBackBtn');
+if (weatherBackBtn) {
+  weatherBackBtn.addEventListener('click', () => {
+    weatherContainer.style.display = 'none';
+    homescreenContainer.style.display = 'block';
+  });
+}
+
+// ================================================================
+// 备忘录界面
+// ================================================================
+const notesContainer = document.getElementById('notesContainer');
+
+function updateNotesTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const timeDisplay = document.getElementById('notesTime');
+  if (timeDisplay) {
+    timeDisplay.textContent = `${hours}:${minutes}`;
+  }
+}
+
+const notesBackBtn = document.getElementById('notesBackBtn');
+if (notesBackBtn) {
+  notesBackBtn.addEventListener('click', () => {
+    notesContainer.style.display = 'none';
+    homescreenContainer.style.display = 'block';
+  });
+}

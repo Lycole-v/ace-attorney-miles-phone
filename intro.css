@@ -1528,3 +1528,247 @@ body {
 .chat-input-disabled {
   opacity: 0.4;
 }
+
+
+
+
+/* ================================================================
+   天气界面
+   ================================================================ */
+.weather-app-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #0a1628;
+  color: #eee;
+}
+
+.weather-app-status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+/* 天气顶部导航 */
+.weather-app-header {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(10, 22, 40, 0.95);
+  border-bottom: 1px solid #1a2a3a;
+  z-index: 9;
+}
+
+.weather-app-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #eee;
+}
+
+.weather-app-back {
+  font-size: 16px;
+  color: #7b9fc9;
+  cursor: pointer;
+}
+
+.weather-app-header-spacer {
+  width: 40px;
+}
+
+/* 天气内容 */
+.weather-app-content {
+  position: absolute;
+  top: 85px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 16px;
+  background: linear-gradient(180deg, #0a1628 0%, #162240 100%);
+}
+
+/* 天气卡片 */
+.weather-day-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.weather-day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.weather-day-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.weather-day-icon {
+  font-size: 36px;
+}
+
+.weather-day-temp {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.weather-day-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+}
+
+.weather-detail-icon {
+  font-size: 20px;
+}
+
+.weather-detail-text {
+  font-size: 15px;
+  color: #aaa;
+}
+
+/* ================================================================
+   备忘录界面
+   ================================================================ */
+.notes-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #1a1a1a;
+  color: #eee;
+}
+
+.notes-status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+/* 备忘录顶部导航 */
+.notes-header {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #1e1e1e;
+  border-bottom: 1px solid #2a2a2a;
+  z-index: 9;
+}
+
+.notes-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #eee;
+}
+
+.notes-back {
+  font-size: 16px;
+  color: #f0c060;
+  cursor: pointer;
+}
+
+.notes-header-spacer {
+  width: 40px;
+}
+
+/* 备忘录内容 */
+.notes-content {
+  position: absolute;
+  top: 85px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 16px;
+}
+
+/* 区块 */
+.notes-section {
+  margin-bottom: 24px;
+}
+
+.notes-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f0c060;
+  margin-bottom: 14px;
+}
+
+/* 待办项 */
+.notes-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #222;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #ddd;
+}
+
+.notes-checkbox {
+  font-size: 18px;
+  color: #f0c060;
+}
+
+/* 分隔线 */
+.notes-divider {
+  height: 1px;
+  background: #2a2a2a;
+  margin: 24px 0;
+}
+
+/* 密码本 */
+.notes-password-box {
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.password-label {
+  font-size: 15px;
+  color: #ddd;
+  margin-bottom: 8px;
+}
+
+.password-hint {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 6px;
+}
+
+.password-format {
+  font-size: 13px;
+  color: #777;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}

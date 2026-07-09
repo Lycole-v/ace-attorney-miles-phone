@@ -578,7 +578,7 @@
         <label class="mail-label">邮箱地址</label>
         <div class="mail-input-wrapper">
           <input type="text" class="mail-input" id="mailAddress" placeholder="请输入用户名">
-          <span class="mail-domain">@pro.gov.com</span>
+          <span class="mail-domain">@aap.gov.com</span>
         </div>
       </div>
 
@@ -844,7 +844,7 @@
     </div>
 
     <!-- 系统消息：已领取红包 -->
-    <div class="msg-system">🔒 已领取 老师 的红包转账</div>
+    <div class="msg-system">🧧 已领取 老师 的红包转账</div>
 
     <!-- ====== 9月9日 ====== -->
     <div class="msg-date-label">9月9日</div>
@@ -1038,6 +1038,140 @@
     <span class="chat-input-placeholder">你们已不是好友...</span>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+<!-- ==================== 天气界面（默认隐藏） ==================== -->
+<div class="weather-app-container" id="weatherContainer" style="display: none;">
+  
+  <!-- 状态栏 -->
+  <div class="status-bar weather-app-status-bar">
+    <span class="status-time" id="weatherTime">12:42</span>
+    <div class="status-icons">
+      <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+      </svg>
+      <span class="battery-wrapper">
+        <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+          <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+        </svg>
+        <span class="battery-text" id="weatherBattery">100%</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- 天气顶部导航 -->
+  <div class="weather-app-header">
+    <span class="weather-app-back" id="weatherBackBtn">← 返回</span>
+    <span class="weather-app-title">天气</span>
+    <span class="weather-app-header-spacer"></span>
+  </div>
+
+  <!-- 天气内容 -->
+  <div class="weather-app-content">
+    
+    <!-- 今天 -->
+    <div class="weather-day-card">
+      <div class="weather-day-header">
+        <span class="weather-day-name">今天</span>
+        <span class="weather-day-icon">☀️</span>
+        <span class="weather-day-temp">晴 5°</span>
+      </div>
+      <div class="weather-day-detail">
+        <span class="weather-detail-icon">🌊</span>
+        <span class="weather-detail-text">没有地震</span>
+      </div>
+    </div>
+
+    <!-- 明天 -->
+    <div class="weather-day-card">
+      <div class="weather-day-header">
+        <span class="weather-day-name">明天</span>
+        <span class="weather-day-icon">🌫️</span>
+        <span class="weather-day-temp">雾 4°</span>
+      </div>
+      <div class="weather-day-detail">
+        <span class="weather-detail-icon">🌊</span>
+        <span class="weather-detail-text">没有地震</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- ==================== 备忘录界面（默认隐藏） ==================== -->
+<div class="notes-container" id="notesContainer" style="display: none;">
+  
+  <!-- 状态栏 -->
+  <div class="status-bar notes-status-bar">
+    <span class="status-time" id="notesTime">12:42</span>
+    <div class="status-icons">
+      <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+      </svg>
+      <span class="battery-wrapper">
+        <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+          <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+        </svg>
+        <span class="battery-text" id="notesBattery">100%</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- 备忘录顶部导航 -->
+  <div class="notes-header">
+    <span class="notes-back" id="notesBackBtn">← 返回</span>
+    <span class="notes-title">备忘录</span>
+    <span class="notes-header-spacer"></span>
+  </div>
+
+  <!-- 备忘录内容 -->
+  <div class="notes-content">
+    
+    <!-- 待办事项 -->
+    <div class="notes-section">
+      <h3 class="notes-section-title">📋 待办事项</h3>
+      <div class="notes-item">
+        <span class="notes-checkbox">☐</span>
+        <span>订冥返程的机票</span>
+      </div>
+      <div class="notes-item">
+        <span class="notes-checkbox">☐</span>
+        <span>不要忘记，那个日期。</span>
+      </div>
+    </div>
+
+    <!-- 分隔线 -->
+    <div class="notes-divider"></div>
+
+    <!-- 密码本 -->
+    <div class="notes-section">
+      <h3 class="notes-section-title">🔒 密码本</h3>
+      <div class="notes-password-box">
+        <div class="password-label">邮箱密码</div>
+        <div class="password-hint">我的生日 & 冥的生日</div>
+        <div class="password-format">YYYY-MM-DD & YYYY-MM-DD</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 
   <script src="intro.js"></script>
