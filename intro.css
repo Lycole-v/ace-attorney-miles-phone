@@ -1772,3 +1772,293 @@ body {
   font-family: 'Times New Roman', Times, serif;
   letter-spacing: 1px;
 }
+
+
+/* ================================================================
+   支付宝界面
+   ================================================================ */
+.alipay-login-container,
+.alipay-verify-container,
+.alipay-home-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #1677ff;
+  color: #fff;
+}
+
+.alipay-status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.alipay-header {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  z-index: 9;
+}
+
+.alipay-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.alipay-back {
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.alipay-header-spacer {
+  width: 40px;
+}
+
+/* 登录表单 */
+.alipay-login-form,
+.alipay-verify-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 360px;
+}
+
+.alipay-logo {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 8px;
+}
+
+.alipay-welcome {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 32px;
+}
+
+.alipay-input-group {
+  margin-bottom: 18px;
+}
+
+.alipay-label {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 6px;
+}
+
+.alipay-input {
+  width: 100%;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  outline: none;
+  padding: 12px 0;
+  font-size: 16px;
+  color: #fff;
+  font-family: inherit;
+}
+
+.alipay-input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+.alipay-login-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 24px;
+  background: #fff;
+  color: #1677ff;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.alipay-login-btn:active {
+  opacity: 0.8;
+}
+
+.alipay-error {
+  text-align: center;
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-top: 12px;
+  min-height: 20px;
+}
+
+.alipay-hint {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 20px;
+}
+
+/* 安全验证 */
+.verify-icon {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.verify-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.verify-desc {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 28px;
+}
+
+/* 支付宝首页 */
+.alipay-home-content {
+  position: absolute;
+  top: 85px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: 16px 16px 0 0;
+  color: #333;
+}
+
+.alipay-balance-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.balance-label {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.balance-amount {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.balance-sub {
+  font-size: 12px;
+  color: #4caf50;
+  margin-top: 6px;
+}
+
+/* 功能按钮 */
+.alipay-functions {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 0;
+  margin-bottom: 16px;
+}
+
+.alipay-func-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #666;
+}
+
+.func-icon {
+  font-size: 24px;
+}
+
+/* 转账记录 */
+.alipay-records {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.records-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.record-avatar.red    { background: #c0392b; }
+.record-avatar.purple { background: #7b5ea7; }
+.record-avatar.gray   { background: #636e72; }
+
+.record-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.record-name {
+  font-size: 14px;
+  color: #333;
+}
+
+.record-date {
+  font-size: 11px;
+  color: #999;
+}
+
+.record-amount {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.record-amount.in  { color: #ff6b35; }
+.record-amount.out { color: #333; }

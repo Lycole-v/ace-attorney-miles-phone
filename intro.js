@@ -6,6 +6,7 @@ const introContainer = document.getElementById('introContainer');
 const lockscreenContainer = document.getElementById('lockscreenContainer');
 const homescreenContainer = document.getElementById('homescreenContainer');
 const startBtn = document.getElementById('startBtn');
+let alipayLoggedIn = false;
 
 function requestFullscreen() {
   const doc = document.documentElement;
@@ -300,6 +301,17 @@ document.querySelectorAll('.app-icon').forEach(icon => {
       notesContainer.style.display = 'block';
       updateNotesTime();
     }
+    if (appName === 'alipay') {
+  requestFullscreen();
+  homescreenContainer.style.display = 'none';
+  if (alipayLoggedIn) {
+    alipayHomeContainer.style.display = 'block';
+    updateAlipayHomeTime();
+  } else {
+    alipayLoginContainer.style.display = 'block';
+    updateAlipayLoginTime();
+  }
+}
 
 
   });
@@ -511,7 +523,7 @@ if (dialCallBtn) {
       return;
     }
     
-    if (cleanNumber === '5558730579') {
+    if (cleanNumber === '5551112309') {
       dialError.textContent = '';
       alert('📞 通话已接通');
       addHistory('检察院客服电话', '呼出');
@@ -691,7 +703,113 @@ if (notesBackBtn) {
 
 
 
+// ================================================================
+// 支付宝登录界面
+// ================================================================
+const alipayLoginContainer = document.getElementById('alipayLoginContainer');
 
+function updateAlipayLoginTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const timeDisplay = document.getElementById('alipayLoginTime');
+  if (timeDisplay) timeDisplay.textContent = `${hours}:${minutes}`;
+}
+
+const alipayLoginBackBtn = document.getElementById('alipayLoginBackBtn');
+if (alipayLoginBackBtn) {
+  alipayLoginBackBtn.addEventListener('click', () => {
+    requestFullscreen();
+    alipayLoginContainer.style.display = 'none';
+    homescreenContainer.style.display = 'block';
+  });
+}
+
+const alipayLoginBtn = document.getElementById('alipayLoginBtn');
+const alipayLoginError = document.getElementById('alipayLoginError');
+if (alipayLoginBtn) {
+  alipayLoginBtn.addEventListener('click', () => {
+    requestFullscreen();
+    const phone = document.getElementById('alipayPhone').value.trim();
+    const password = document.getElementById('alipayPassword').value.trim();
+
+    if (phone !== '5558730579' || password !== '1992-08-01&1999-06-21') {
+      alipayLoginError.textContent = '账号或密码不正确';
+      if (navigator.vibrate) navigator.vibrate(200);
+      return;
+    }
+
+    alipayLoginError.textContent = '';
+    alipayLoginContainer.style.display = 'none';
+    alipayVerifyContainer.style.display = 'block';
+    updateAlipayVerifyTime();
+  });
+}
+
+// ================================================================
+// 支付宝安全验证界面
+// ================================================================
+const alipayVerifyContainer = document.getElementById('alipayVerifyContainer');
+
+function updateAlipayVerifyTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const timeDisplay = document.getElementById('alipayVerifyTime');
+  if (timeDisplay) timeDisplay.textContent = `${hours}:${minutes}`;
+}
+
+const alipayVerifyBackBtn = document.getElementById('alipayVerifyBackBtn');
+if (alipayVerifyBackBtn) {
+  alipayVerifyBackBtn.addEventListener('click', () => {
+    requestFullscreen();
+    alipayVerifyContainer.style.display = 'none';
+    alipayLoginContainer.style.display = 'block';
+  });
+}
+
+const alipayVerifyBtn = document.getElementById('alipayVerifyBtn');
+const alipayVerifyError = document.getElementById('alipayVerifyError');
+if (alipayVerifyBtn) {
+  alipayVerifyBtn.addEventListener('click', () => {
+    requestFullscreen();
+    const a1 = document.getElementById('verifyAmount1').value.trim();
+    const a2 = document.getElementById('verifyAmount2').value.trim();
+
+    if (a1 !== '17000' || a2 !== '100000') {
+      alipayVerifyError.textContent = '验证失败，请检查金额是否正确';
+      if (navigator.vibrate) navigator.vibrate(200);
+      return;
+    }
+    alipayLoggedIn = true;
+    alipayVerifyError.textContent = '';
+    alipayVerifyContainer.style.display = 'none';
+    alipayHomeContainer.style.display = 'block';
+    updateAlipayHomeTime();
+  });
+}
+
+// ================================================================
+// 支付宝首页
+// ================================================================
+const alipayHomeContainer = document.getElementById('alipayHomeContainer');
+
+function updateAlipayHomeTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const timeDisplay = document.getElementById('alipayHomeTime');
+  if (timeDisplay) timeDisplay.textContent = `${hours}:${minutes}`;
+}
+
+const alipayHomeBackBtn = document.getElementById('alipayHomeBackBtn');
+if (alipayHomeBackBtn) {
+  alipayHomeBackBtn.addEventListener('click', () => {
+    requestFullscreen();
+    alipayHomeContainer.style.display = 'none';
+    homescreenContainer.style.display = 'block';
+  });
+}
 
 
 

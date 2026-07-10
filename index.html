@@ -669,6 +669,12 @@
     <!-- ========== 通讯录 ========== -->
     <div class="phone-tab-content" id="contactsTab">
       <div class="contacts-list">
+      <div class="contact-item" data-name="我的信息" data-number="555-873-0579">
+                <div class="contact-avatar red">我</div>
+                <span class="contact-name">我的信息</span>
+                <span class="contact-arrow">5558730579</span>
+              </div>
+
         <div class="contact-item" data-name="老师" data-number="555-873-0579">
           <div class="contact-avatar red">师</div>
           <span class="contact-name">老师</span>
@@ -740,7 +746,7 @@
             <span class="history-name">冥</span>
             <span class="history-type">📞 呼出</span>
           </div>
-          <div class="history-time">16:27 6/24</div>
+          <div class="history-time">16:27 6/21</div>
         </div>
       </div>
     </div>
@@ -1171,6 +1177,202 @@
 
   </div>
 </div>
+
+<!-- ==================== 支付宝登录界面（默认隐藏） ==================== -->
+<div class="alipay-login-container" id="alipayLoginContainer" style="display: none;">
+  
+  <!-- 状态栏 -->
+  <div class="status-bar alipay-status-bar">
+    <span class="status-time" id="alipayLoginTime">12:42</span>
+    <div class="status-icons">
+      <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+      </svg>
+      <span class="battery-wrapper">
+        <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+          <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+        </svg>
+        <span class="battery-text" id="alipayLoginBattery">100%</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- 支付宝导航 -->
+  <div class="alipay-header">
+    <span class="alipay-back" id="alipayLoginBackBtn">← 返回</span>
+    <span class="alipay-title">支付宝</span>
+    <span class="alipay-header-spacer"></span>
+  </div>
+
+  <!-- 登录表单 -->
+  <div class="alipay-login-form">
+    <div class="alipay-logo">支付宝</div>
+    <h2 class="alipay-welcome">欢迎回来，御剑怜侍</h2>
+    
+    <div class="alipay-input-group">
+      <label class="alipay-label">手机号</label>
+      <input type="tel" class="alipay-input" id="alipayPhone" placeholder="请输入手机号">
+    </div>
+
+    <div class="alipay-input-group">
+      <label class="alipay-label">密码</label>
+      <input type="password" class="alipay-input" id="alipayPassword" placeholder="请输入密码">
+    </div>
+
+    <button class="alipay-login-btn" id="alipayLoginBtn">登 录</button>
+    <p class="alipay-error" id="alipayLoginError"></p>
+    <!-- <p class="alipay-hint">忘记密码？</p> -->
+  </div>
+</div>
+
+<!-- ==================== 支付宝安全验证界面（默认隐藏） ==================== -->
+<div class="alipay-verify-container" id="alipayVerifyContainer" style="display: none;">
+  
+  <div class="status-bar alipay-status-bar">
+    <span class="status-time" id="alipayVerifyTime">12:42</span>
+    <div class="status-icons">
+      <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+      </svg>
+      <span class="battery-wrapper">
+        <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+          <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+        </svg>
+        <span class="battery-text" id="alipayVerifyBattery">100%</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="alipay-header">
+    <span class="alipay-back" id="alipayVerifyBackBtn">← 返回</span>
+    <span class="alipay-title">安全验证</span>
+    <span class="alipay-header-spacer"></span>
+  </div>
+
+  <div class="alipay-verify-form">
+    <div class="verify-icon">🔒</div>
+    <h2 class="verify-title">身份验证</h2>
+    <p class="verify-desc">请回答以下问题以确认身份</p>
+
+    <div class="alipay-input-group">
+      <label class="alipay-label">最近一次大额转账金额</label>
+      <input type="text" class="alipay-input" id="verifyAmount1" placeholder="请输入金额">
+    </div>
+
+    <div class="alipay-input-group">
+      <label class="alipay-label">最近一次大额收款金额</label>
+      <input type="text" class="alipay-input" id="verifyAmount2" placeholder="请输入金额">
+    </div>
+
+    <button class="alipay-login-btn" id="alipayVerifyBtn">确 认</button>
+    <p class="alipay-error" id="alipayVerifyError"></p>
+  </div>
+</div>
+
+<!-- ==================== 支付宝首页（默认隐藏） ==================== -->
+<div class="alipay-home-container" id="alipayHomeContainer" style="display: none;">
+  
+  <div class="status-bar alipay-status-bar">
+    <span class="status-time" id="alipayHomeTime">12:42</span>
+    <div class="status-icons">
+      <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+      </svg>
+      <span class="battery-wrapper">
+        <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+          <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+        </svg>
+        <span class="battery-text" id="alipayHomeBattery">100%</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="alipay-header">
+    <span class="alipay-back" id="alipayHomeBackBtn">← 返回</span>
+    <span class="alipay-title">支付宝</span>
+    <span class="alipay-header-spacer"></span>
+  </div>
+
+  <div class="alipay-home-content">
+    
+    <!-- 余额卡片 -->
+    <div class="alipay-balance-card">
+      <div class="balance-label">总资产</div>
+      <div class="balance-amount">¥ 1,4289,8321.56</div>
+      <div class="balance-sub">昨日收益 +2,384.21</div>
+    </div>
+
+    <!-- 功能按钮 -->
+    <div class="alipay-functions">
+      <div class="alipay-func-item">
+        <div class="func-icon">💸</div>
+        <span>转账</span>
+      </div>
+      <div class="alipay-func-item">
+        <div class="func-icon">📲</div>
+        <span>收付款</span>
+      </div>
+      <div class="alipay-func-item">
+        <div class="func-icon">💳</div>
+        <span>卡包</span>
+      </div>
+      <div class="alipay-func-item">
+        <div class="func-icon">🔔</div>
+        <span>消息</span>
+      </div>
+    </div>
+
+    <!-- 转账记录 -->
+    <div class="alipay-records">
+      <h3 class="records-title">转账记录</h3>
+      
+      <div class="record-item">
+        <div class="record-avatar red">师</div>
+        <div class="record-info">
+          <span class="record-name">老师</span>
+          <span class="record-date">8/1</span>
+        </div>
+        <div class="record-amount in">+¥10,0000.00</div>
+      </div>
+
+      <div class="record-item">
+        <div class="record-avatar purple">冥</div>
+        <div class="record-info">
+          <span class="record-name">冥</span>
+          <span class="record-date">6/21</span>
+        </div>
+        <div class="record-amount out">-¥1,7000.00</div>
+      </div>
+
+      <div class="record-item">
+        <div class="record-avatar gray">商</div>
+        <div class="record-info">
+          <span class="record-name">商家</span>
+          <span class="record-date">6/1</span>
+        </div>
+        <div class="record-amount out">-¥9399.99</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
 
 
