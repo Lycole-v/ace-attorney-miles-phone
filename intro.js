@@ -684,3 +684,27 @@ if (notesBackBtn) {
     homescreenContainer.style.display = 'block';
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
