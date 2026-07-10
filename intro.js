@@ -313,6 +313,15 @@ document.querySelectorAll('.app-icon').forEach(icon => {
   }
 }
 
+    if (appName === 'safari') {
+      requestFullscreen();
+      homescreenContainer.style.display = 'none';
+      safariContainer.style.display = 'block';
+      safariSearchPage.style.display = 'block';
+      safariDl6Page.style.display = 'none';
+      updateSafariTime();
+    }
+
 
   });
 });
@@ -531,7 +540,15 @@ if (dialCallBtn) {
       dialError.textContent = '';
       alert('📞 对方拒接了通话...');
       addHistory('未知电话', '呼出');
-    } else {
+    } 
+    else if (cleanNumber === '5558730579') {
+      dialError.textContent = '不能给自己打电话';
+      if (navigator.vibrate) {
+        navigator.vibrate(100);
+      }
+    } 
+    
+    else {
       dialError.textContent = '号码不存在';
       if (navigator.vibrate) {
         navigator.vibrate(100);
@@ -813,7 +830,89 @@ if (alipayHomeBackBtn) {
 
 
 
+// ================================================================
+// Safari 浏览器界面
+// ================================================================
+const safariContainer = document.getElementById('safariContainer');
+const safariSearchPage = document.getElementById('safariSearchPage');
+const safariDl6Page = document.getElementById('safariDl6Page');
+const safariHint = document.getElementById('safariHint');
 
+function updateSafariTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const timeDisplay = document.getElementById('safariTime');
+  if (timeDisplay) timeDisplay.textContent = `${hours}:${minutes}`;
+}
+
+// 返回按钮（搜索页）
+const safariBackBtn = document.getElementById('safariBackBtn');
+if (safariBackBtn) {
+  safariBackBtn.addEventListener('click', () => {
+    requestFullscreen();
+    safariContainer.style.display = 'none';
+    homescreenContainer.style.display = 'block';
+  });
+}
+
+// 搜索框回车
+const safariSearchInput = document.getElementById('safariSearchInput');
+if (safariSearchInput) {
+  safariSearchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      checkSafariUrl(safariSearchInput.value.trim());
+    }
+  });
+  
+  // 移动端用完成按钮
+  safariSearchInput.addEventListener('blur', () => {
+    setTimeout(() => {
+      checkSafariUrl(safariSearchInput.value.trim());
+    }, 100);
+  });
+}
+
+// 清除按钮
+const safariSearchClear = document.getElementById('safariSearchClear');
+if (safariSearchClear) {
+  safariSearchClear.addEventListener('click', () => {
+    safariSearchInput.value = '';
+    safariSearchClear.style.display = 'none';
+  });
+}
+
+// 监听输入显示清除按钮
+if (safariSearchInput) {
+  safariSearchInput.addEventListener('input', () => {
+    safariSearchClear.style.display = safariSearchInput.value ? 'block' : 'none';
+  });
+}
+
+function checkSafariUrl(url) {
+  if (url === 'https://aceattorneyprosecutorsoffice.com/case_files/DL_6') {
+    safariSearchPage.style.display = 'none';
+    safariDl6Page.style.display = 'block';
+  } else if (url === '') {
+    safariHint.textContent = '当前账号为工作账号，仅支持搜索检察院内部网址。';
+    safariHint.style.display = 'block';
+  } else {
+    safariHint.textContent = '当前账号为工作账号，仅支持搜索检察院内部网址。';
+    safariHint.style.display = 'block';
+  }
+}
+
+// DL-6 页面返回按钮
+const safariDl6BackBtn = document.getElementById('safariDl6BackBtn');
+if (safariDl6BackBtn) {
+  safariDl6BackBtn.addEventListener('click', () => {
+    requestFullscreen();
+    safariDl6Page.style.display = 'none';
+    safariSearchPage.style.display = 'block';
+    safariSearchInput.value = 'https://aceattorneyprosecutorsoffice.com/case_files/DL_6';
+  });
+}
 
 
 

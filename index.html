@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>逆转裁判 · IF</title>
+  <title>逆转裁判 · if</title>
   <link rel="stylesheet" href="intro.css">
 </head>
 <body>
@@ -24,12 +24,12 @@
       
       <div class="intro-block">
         <h1 class="game-title">逆转裁判</h1>
-        <p class="game-subtitle">～ IF 线 ～</p>
+        <p class="game-subtitle">～ if 线 ～</p>
       </div>
 
       <div class="intro-block disclaimer">
         <p>· 逆转裁判1时间线，可能略微崩坏</p>
-        <p>· 极度OOC，应该算IF线..？</p>
+        <p>· 极度OOC，应该算if线..？</p>
         <p>· 时间线错乱（大概是2001年也有手机和微信的假设...）</p>
         <p>· 和原作偏差可能较大</p>
         <p>· 全员cb向，虽然作者可能无意识有倾向</p>
@@ -52,6 +52,7 @@
 
       <div class="intro-block ending">
         <p>怀着这样的心情，你迎接了新的一天。</p>
+        <p>你能否解开老师的冷漠背后的真相？</p>
         <p class="closing-line">离那一天，真是越来越近了呢……</p>
       </div>
 
@@ -572,7 +573,7 @@
     <!-- 登录表单 -->
     <div class="mail-login">
       <div class="mail-logo">✉️</div>
-      <h2 class="mail-welcome">欢迎回来，御剑怜侍</h2>
+      <h2 class="mail-welcome">登陆邮箱</h2>
       
       <div class="mail-input-group">
         <label class="mail-label">邮箱地址</label>
@@ -1212,7 +1213,7 @@
   <!-- 登录表单 -->
   <div class="alipay-login-form">
     <div class="alipay-logo">支付宝</div>
-    <h2 class="alipay-welcome">欢迎回来，御剑怜侍</h2>
+    <h2 class="alipay-welcome">登陆支付宝</h2>
     
     <div class="alipay-input-group">
       <label class="alipay-label">手机号</label>
@@ -1369,6 +1370,105 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- ==================== Safari 浏览器界面（默认隐藏） ==================== -->
+<div class="safari-container" id="safariContainer" style="display: none;">
+  
+  <!-- 状态栏 -->
+  <div class="status-bar safari-status-bar">
+    <span class="status-time" id="safariTime">12:42</span>
+    <div class="status-icons">
+      <svg class="status-svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M4 18.9653C4.5888 18.4073 5.19522 17.8786 5.8174 17.3792C17.0371 8.37423 33.3821 8.90292 44 18.9653" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 25.799C30.268 18.067 17.732 18.067 10 25.799" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 32.3137C27.5817 27.8954 20.4183 27.8954 16 32.3137" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C25.3807 40 26.5 38.8807 26.5 37.5C26.5 36.1193 25.3807 35 24 35C22.6193 35 21.5 36.1193 21.5 37.5C21.5 38.8807 22.6193 40 24 40Z" fill="#ffffff"/>
+      </svg>
+      <span class="battery-wrapper">
+        <svg class="status-svg battery-svg" width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M38 14H6C4.89543 14 4 14.8954 4 16V32C4 33.1046 4.89543 34 6 34H38C39.1046 34 40 33.1046 40 32V16C40 14.8954 39.1046 14 38 14Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 20H44C45.1046 20 46 20.8954 46 22V26C46 27.1046 45.1046 28 44 28H42V20Z" fill="#ffffff"/>
+          <rect x="8" y="18" width="26" height="12" rx="2" fill="#ffffff" opacity="0.9"/>
+        </svg>
+        <span class="battery-text" id="safariBattery">100%</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Safari 搜索界面 -->
+  <div class="safari-search-page" id="safariSearchPage">
+    <div class="safari-header">
+      <span class="safari-back" id="safariBackBtn">← 返回</span>
+      <div class="safari-search-bar" id="safariSearchBar">
+        <span class="safari-search-icon">🔍</span>
+        <input type="text" class="safari-search-input" id="safariSearchInput" placeholder="搜索或输入网址" value="https://aceattorneyprosecutorsoffice.com/case_files/DL_6">
+        <span class="safari-search-clear" id="safariSearchClear">✕</span>
+      </div>
+    </div>
+    <div class="safari-hint" id="safariHint">当前账号为工作账号，仅支持搜索检察院内部网址。</div>
+  </div>
+
+  <!-- DL-6 案件页面 -->
+  <div class="safari-page" id="safariDl6Page" style="display: none;">
+    <div class="safari-header">
+      <span class="safari-back" id="safariDl6BackBtn">← 返回</span>
+      <div class="safari-url-bar">
+        <span class="safari-url-text">aceattorneyprosecutorsoffice.com</span>
+      </div>
+      <span class="safari-header-spacer"></span>
+    </div>
+
+    <div class="safari-page-content">
+      
+      <h1 class="case-title">DL-6 号事件</h1>
+      
+      <div class="case-section">
+        <h2 class="case-section-title">事件概要</h2>
+        <div class="case-info-row"><span class="case-label">现场：</span><span>地方法院，电梯内</span></div>
+        <div class="case-info-row"><span class="case-label">时间：</span><span>2001年12月28日</span></div>
+        <div class="case-info-row"><span class="case-label">状况：</span><span>被发现时电梯内处于极度缺氧状态；从现场周遭也没有发现任何线索。</span></div>
+        <div class="case-image-card">
+          <div class="case-image-label">犯罪现场照片</div>
+          <img src="https://cdn.jsdelivr.net/gh/Lycole-v/ace-attorney-miles-phone@main/Photos/Gregcrimescene.webp" alt="犯罪现场" class="case-img">
+        </div>
+      </div>
+
+      <div class="case-section">
+        <h2 class="case-section-title">被害人的资料</h2>
+                        <div class="case-image-card">
+          <div class="case-image-label">御剑信 大头照</div>
+          <img src="https://cdn.jsdelivr.net/gh/Lycole-v/ace-attorney-miles-phone@main/Photos/Gregory_Edgeworth_Mugshot.webp" alt="御剑信大头照" class="case-img">
+        </div>
+        <div class="case-info-row"><span class="case-label">姓名：</span><span>御剑信（35岁）</span></div>
+        <div class="case-info-row"><span class="case-label">职业：</span><span>律师</span></div>
+        <div class="case-info-row"><span class="case-label">经过：</span><span>在败诉后回家途中，与儿子怜侍（9岁）一起被困在电梯里。</span></div>
+        <div class="case-info-row"><span class="case-label">死因：</span><span>遭1颗子弹射入心脏。</span></div>
+        <div class="case-info-row"><span class="case-label">备注：</span><span>凶器总共击发过2次。</span></div>
+
+
+        <div class="case-image-card">
+          <div class="case-image-label">御剑信 生前照片</div>
+          <img src="https://cdn.jsdelivr.net/gh/Lycole-v/ace-attorney-miles-phone@main/Photos/Ye_olde_gregory.webp" alt="御剑信生前照片" class="case-img">
+        </div>
+      </div>
+
+      <div class="case-section">
+        <h2 class="case-section-title">嫌犯的资料</h2>
+        <div class="case-info-row"><span class="case-label">姓名：</span><span>灰根高太郎（37岁）</span></div>
+        <div class="case-info-row"><span class="case-label">经过：</span><span>和御剑父子俩一起被困在电梯中；平时担任法警。由于陷入极度缺氧状态，因而失去意识。</span></div>
+        <div class="case-info-row"><span class="case-label">后续：</span><span>遭到逮捕后，他的未婚妻松下小百合自杀身亡。</span></div>
+      </div>
+
+      
+
+      <div class="case-footer">
+        <p>检察院客服电话</p>
+        <p class="case-phone">5551112309</p>
+      </div>
+
+    </div>
   </div>
 </div>
 
